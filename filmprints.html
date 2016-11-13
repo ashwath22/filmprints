@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>TESTING</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/html5bp.css">
+  <link rel="stylesheet" href="css/filmprints.css">
+</head>
+
+<body>
+<ul class="homePage">
+    </ul>
+
+    <script id="homePageTemplate" type="text/x-handlebars-template">
+      <div class="heroImage">
+        <h1>{{items.4.fields.titleText}}</h1>
+        <img src="{{includes.Asset.1.fields.file.url}}">
+        <p>{{items.4.fields.leadText}}</p>
+      </div>
+    </script>
+</div>  
+
+<div id="hero"></div>
+  
+<script type="text/jsx">
+    
+    var hero = document.querySelector("#hero");
+    
+
+    var Hero = React.createClass({
+      render: function() {
+        console.log('render');
+        return (
+          <div class="heroImage">
+            <h1>{this.props.title}</h1>
+            <img src="{this.props.imgUrl}" />
+            <p>{this.props.leadText}</p>
+          </div>
+        );
+      }
+    });
+
+    var el = <Hero title="film-prints" imgUrl="xyz.jpg" leadText="lead text" />;
+    ReactDOM.render(el, hero);
+
+</script> 
+<!-- Go into JSON, fina all specific paths and pass it through in el. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://npmcdn.com/contentful@latest/browser-dist/contentful.min.js"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script> -->
+<!-- 
+<script src="https://fb.me/react-0.14.6.js"></script>
+<script src="https://fb.me/react-dom-0.14.6.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
+
+<script type="text/jsx" src="js/filmprints.js"></script>
+ -->
+
+<script src="js/react.js"></script>
+<script src="js/react-dom.js"></script>
+<script src="js/babel-core.js"></script>
+<script type="text/babel" src="js/filmprints.jsx"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
