@@ -7,6 +7,20 @@ let contentfulUrl = "https://cdn.contentful.com/spaces/ey04yid3tpau/entries?acce
 // Add Event Listeners. 
 window.addEventListener('load', showStuff);
 
+var albums = 0;
+var photos = 0;
+
+var photoDump = [];
+
+var filmprints = {
+    titleText: null,
+    leadText: null,
+    heroImageUrl: null,
+    album: [{
+    }]
+}
+
+
 
 // Update page
 // ----------------------------------------------
@@ -29,10 +43,28 @@ function doStuff(json) {
             var albums=item.fields.albums;
             console.log(item.fields.titleText);
             console.log(item.fields.leadText);
-            var heroImageLink = getImageLink(item.fields.heroImage.sys.id);
-            console.log("Hero image: ", "http:" + heroImageLink);
+            // var heroImageLink = getImageLink(item.fields.heroImage.sys.id);
+            // console.log("Hero image: ", "http:" + heroImageLink);
+            assets.forEach(function(asset){
+                if (asset.sys.id === item.fields.heroImage.sys.id){
+                    console.log("http:" + asset.fields.file.url);
+                    filmprints.heroImageUrl = "http:" + asset.fields.file.url;
+                }
+            })
+
+            // filmprints.push({
+            //     "titleText": item.fields.titleText
+            // })
+
+            filmprints.titleText = item.fields.titleText;
+            filmprints.leadText = item.fields.leadText;
+            
+            console.log(filmprints);
+            var i=0;
             albums.forEach(function(album){
                 var albumId = album.sys.id;
+                var tempAlbumCover= null;
+
                 items.forEach(function(item){
                     // Find and print album details
                     if(item.sys.id === albumId){
@@ -40,35 +72,68 @@ function doStuff(json) {
                         console.log(" ");
                         console.log(item.fields.albumName);
                         console.log(item.fields.albumDate);
+
+                        
+                        
+                        console.log(filmprints.album.photo);
+
                         // console.log("cover image: ",item.fields.coverImage.sys.id);
-                        var albumCoverLink = getImageLink(item.fields.coverImage.sys.id);
-                        console.log("http:" + albumCoverLink);
+                        // var albumCoverLink = getImageLink(item.fields.coverImage.sys.id);
+                        assets.forEach(function(asset){
+                            if (asset.sys.id === item.fields.coverImage.sys.id){
+                                console.log("http:" + asset.fields.file.url);
+                                tempAlbumCover = "http:" + asset.fields.file.url;
+                            }
+                        })
+                        // console.log("http:" + albumCoverLink);
                              
                         // Find and print picture details
                         var images = item.fields.images;
                         images.forEach(function(image){
+                        var tempLocation = null;
+                        var tempLink = null;
                             items.forEach(function(item){
                                 if (item.sys.id === image.sys.id){
                                     console.log(" ",item.fields.location);
+                                    tempLocation = item.fields.location;
                                     // Find id from sys then from fields as assets are found with fields.id
                                     // console.log(" Image id:",item.fields.photo.sys.id); 
                                     // Find the right image asset based on fields.id
+
                                     assets.forEach(function(asset){
                                         if (asset.sys.id === item.fields.photo.sys.id){
                                             console.log("http:" + asset.fields.file.url);
-
+                                            tempLink = "http:" + asset.fields.file.url;
                                         }
                                     })                                   
                                 }
                             })
                             // console.log("Place:", location);
+                            photoDump.push({
+                                "location": tempLocation,
+                                "link": tempLink
+                            })
                         })
+
+                        filmprints.album.push(
+                            {
+                                "name": item.fields.albumName, 
+                                "date": item.fields.albumDate,
+                                "coverImage:": tempAlbumCover,
+                                "photo": photoDump
+                            }
+                        );
+                        photoDump=[]
+
+                        console.log(filmprints.album)
+
                     }    
-                })
+                })          
             })
         }
+    
     })
-
+    console.log(filmprints);
     // return link for an image from Asset object
     function getImageLink(imageId){
         assets.forEach(function(asset){
