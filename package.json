@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/ashwath22/filmprints/issues"
   },
-  "homepage": "https://github.com/ashwath22/filmprints#readme"
+  "homepage": "https://github.com/ashwath22/filmprints#readme",
+  "dependencies": {
+    "contentful": "^3.7.1",
+    "ejs": "^2.5.3",
+    "express": "^4.14.0"
+  }
 }
