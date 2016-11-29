@@ -1,0 +1,19 @@
+{
+  "name": "filmprints",
+  "version": "1.0.0",
+  "description": "A showcase of my latest analog and digital obsessions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashwath22/filmprints.git"
+  },
+  "author": "Ashwath Anand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashwath22/filmprints/issues"
+  },
+  "homepage": "https://github.com/ashwath22/filmprints#readme"
+}
