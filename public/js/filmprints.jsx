@@ -1,4 +1,5 @@
 // Create the Elements.
+console.log("here");
 let heroSection = document.querySelector(".heroSection");
 let albumGallery = document.querySelector(".albumGallery");
 let albumTile = document.querySelector(".albumGallery");
@@ -43,7 +44,7 @@ function showStuff(event) {
 }
 // update the articles on the page.
 function doStuff(json) {
-    // console.log('json dump: ',json);
+    console.log('json dump: ',json);
 
     var items = json.items;
     var assets = json.includes.Asset;
@@ -116,7 +117,7 @@ function doStuff(json) {
         }
     
     })
-    console.log(filmprints);
+    console.log("cleaned up JSON: ",filmprints);
     // return link for an image from Asset object
     
     function getImageLink(searchImageId) {
@@ -144,17 +145,15 @@ function showPopup(event) {
     let searchId = target.id;
 
     filmprints.album.forEach(function(ALBUM){
-            if (ALBUM.id === searchId){
-                var templateFn = Handlebars.compile(albumContents.innerHTML);
-                popUpContainer.innerHTML = templateFn(ALBUM);
-            }
-        })     
-
-    
-
+        if (ALBUM.id === searchId){
+            var templateFn = Handlebars.compile(albumContents.innerHTML);
+            popUpContainer.innerHTML = templateFn(ALBUM);
+        }
+    })     
 }
 
 function closePopup(event) {
     event.preventDefault();
     popUp.classList.add("loader", "hidden");
 }
+

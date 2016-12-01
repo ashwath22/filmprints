@@ -20,7 +20,7 @@
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-weight: 300;
   position:absolute;
-  top:45%;
+  top:30%;
   color: #4A4A4A;
   z-index: 2;
   left: 0;
@@ -32,7 +32,7 @@
 .heroImage p {
   font-family: Avenir;
   position:absolute;
-  top:53%;
+  top:40%;
   color: #4A4A4A;
   z-index: 2;
   left: 0;
@@ -110,7 +110,7 @@ font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", G
   z-index: 2;
   left: 0;
   width: 100%;
-  top:47%;
+  top:50%;
 }
 
 figure h3 {

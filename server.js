@@ -4,17 +4,18 @@ var app = express();
 var router = express.Router();
 
 //create new  client
-var contentful = require('contentful')
-var client = contentful.createClient({
-  // This is the space ID. A space is like a project folder in Contentful terms 
-  space: 'filmprints-website',
-  // This is the access token for this space. Normally you get both ID and the token in the Contentful web app 
-  accessToken: '2abdc50fa88530996ceac4fb4ad6f7c3271cc33bb3f6a11721d8d169c0459fa7'
-})
-// This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token. 
-// client.getEntry('5PeGS2SoZGSa4GuiQsigQu')
-// .then((entry) => console.log(entry))
-
+// var contentful = require('contentful')
+// var client = contentful.createClient({
+//   // This is the space ID. A space is like a project folder in Contentful terms 
+//   space: 'filmprints-website',
+//   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app 
+//   accessToken: '2abdc50fa88530996ceac4fb4ad6f7c3271cc33bb3f6a11721d8d169c0459fa7'
+// })
+// // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token. 
+// client.getEntry('ey04yid3tpau')
+// .then(function (entry) {
+//   console.log(util.inspect(entry, {depth: null}))
+// })
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
