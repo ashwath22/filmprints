@@ -5,15 +5,12 @@
 }
 
 .heroImage{
-  position: relative;
   text-align: center;
+  height:100%;
 }
 
 .heroImage img {
-  position:center;
-  z-index: 1;
-  width: 100%;
-  height: auto;
+  height:100%;
 }
 
 .heroImage h1 {
@@ -187,7 +184,7 @@ figure h3 {
 }
 
 .printPhotos img {
-/*  position:center;*/
+  position:center;
   z-index: 11;
   width: 100%;
   height: auto;
@@ -196,8 +193,4 @@ figure h3 {
 
 .printPhotos {
   text-align: center;
-}
-
-#fullpage {
-  overflow:scroll;
 }

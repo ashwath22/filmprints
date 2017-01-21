@@ -9,109 +9,67 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/html5bp.css">
   <link rel="stylesheet" href="css/filmprints.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.9/jquery.fullPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.2/jquery.fullPage.css">
 </head>
 
 <body>
 
-<div id="popUp" class="loader hidden">
-  <a href="#" class="closePopUp">x</a>  
-  <div class="popUpContainer">    
-  </div>    
-</div>
-
-<section class = "heroSection heroImage">
-</section>
-
-<section class = "albumGallery">
-</section>
-
-<script>
-  $(document).ready(function() {
-    $('#fullpage').fullpage();
-  });
-</script>
-
-<div id="fullpage">
-  <div class="section">
-    <script id="albumContents" type="text/x-handlebars-template">
-      {{#each photo}}
-        <div class= "printPhotos section"> 
-          <img src="{{link}}" />
-          <p>{{location}}</p>
-        </div>             
-      {{/each}}  
-    </script>
+  <div id="popUp" class="loader hidden">
+    <a href="#" class="closePopUp">x</a>  
+    <div class="popUpContainer">    
+    </div>    
   </div>
-
-  <div class="section">
-    <script id="heroTemplate" type="text/x-handlebars-template">
-      <h1>{{titleText}}</h1>
-      <img src="{{heroImageUrl}}" />
-      <p>{{leadText}}</p>  
-    </script>
-  </div>
-<!-- </div>
-<div id="fullpage"> -->
-  <div class="section">
-    <script id="albumTemplate" type="text/x-handlebars-template">
-      <div class= "albumsSection">
-        {{#each album}}
-          <div class= "albumTile"> 
-            <figure id= {{id}}>
-              <h3 class="albumName">{{name}}</h3>
-              <img src="{{coverImage}}" />
-              <p class="albumDate">{{date}}</p>
-            </figure> 
-          </div>             
-        {{/each}}
-      </div>  
-    </script>
-  </div>
-</div>
-
-<!-- <div id="hero"></div>
   
-<script type="text/jsx">
-    
-    var hero = document.querySelector("#hero");
-    
-    var Hero = React.createClass({
-      render: function() {
-        console.log('render');
-        return (
-          <div class="heroImage">
-            <h1>{this.props.title}</h1>
-            <img src="{this.props.imgUrl}" />
-            <p>{this.props.leadText}</p>
-          </div>
-        );
-      }
+  <div id="fullpage">
+    <div class="section">
+      <section class = "heroSection heroImage"></section>
+    </div>
+    <div class="section">
+        <section class = "albumGallery"></section>
+    </div>
+  </div>
+
+  <script id="albumContents" type="text/x-handlebars-template">
+    {{#each photo}}
+      <div class= "printPhotos section"> 
+        <img src="{{link}}" />
+        <p>{{location}}</p>
+      </div>             
+    {{/each}}  
+  </script>
+
+  <script id="heroTemplate" type="text/x-handlebars-template">
+    <h1>{{titleText}}</h1>
+    <img src="{{heroImageUrl}}" />
+    <p>{{leadText}}</p>  
+  </script>
+
+  <script id="albumTemplate" type="text/x-handlebars-template">
+    <div class= "albumsSection">
+      {{#each album}}
+        <div class= "albumTile"> 
+          <figure id= {{id}}>
+            <h3 class="albumName">{{name}}</h3>
+            <img src="{{coverImage}}" />
+            <p class="albumDate">{{date}}</p>
+          </figure> 
+        </div>             
+      {{/each}}
+    </div>  
+  </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://npmcdn.com/contentful@latest/browser-dist/contentful.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.2/jquery.fullPage.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#fullpage').fullpage();
+      console.log("fullpage engaged!!");
     });
-    var el = <Hero title="film-prints" imgUrl="xyz.jpg" leadText="lead text" />;
-    ReactDOM.render(el, hero);
-</script>  -->
-<!-- Go into JSON, fina all specific paths and pass it through in el. -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://npmcdn.com/contentful@latest/browser-dist/contentful.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.9/jquery.fullPage.js"></script>
-
-<script src="js/filmprints.jsx"></script>
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script> -->
-<!-- 
-<script src="https://fb.me/react-0.14.6.js"></script>
-<script src="https://fb.me/react-dom-0.14.6.js"></script>
-<script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
-<script type="text/jsx" src="js/filmprints.js"></script>
- -->
-
-<!-- <script src="js/react.js"></script>
-<script src="js/react-dom.js"></script>
-<script src="js/babel-core.js"></script>
-<script type="text/babel" src="js/filmprints.jsx"></script> -->
+  </script>
+  <script src="js/filmprints.jsx"></script>
 
 </body>
 </html>
