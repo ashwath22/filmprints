@@ -22,16 +22,22 @@ var filmprints = {
 }
 
 function loadHomeContent(doSomething) {
-    jQuery.getJSON(contentfulUrl, cleanupJsonAndShowHome);
+    jQuery.getJSON(contentfulUrl, function(json) {
+        console.log('json dump: ',json);
+        cleanJson(json);
+        showHome();
+    });
 }
 
 function loadAlbumContent(doSomething) {
-    jQuery.getJSON(contentfulUrl, cleanupJsonAndShowAlbum);
+    jQuery.getJSON(contentfulUrl, function(json) {
+        console.log('json dump: ',json);
+        cleanJson(json);
+        showAlbum();
+    });
 }
 
-function cleanupJsonAndShowHome(json) {
-    console.log('json dump: ',json);
-
+function cleanJson(json) {
     var items = json.items;
     var assets = json.includes.Asset;
 
@@ -102,95 +108,11 @@ function cleanupJsonAndShowHome(json) {
             })
         }
     
-    })
+    });
     console.log("cleaned up JSON: ",filmprints);
-
-    showHome();
 }
 
-function cleanupJsonAndShowAlbum(json) {
-    console.log('json dump: ',json);
-
-    var items = json.items;
-    var assets = json.includes.Asset;
-
-    items.forEach(function(item){
-        if (item.fields.albums) {
-            var albums=item.fields.albums;
-            
-            assets.forEach(function(asset){
-                if (asset.sys.id === item.fields.heroImage.sys.id){
-                    filmprints.heroImageUrl = "http:" + asset.fields.file.url;
-                }
-            })
-
-            filmprints.titleText = item.fields.titleText;
-            filmprints.leadText = item.fields.leadText;
-            
-            albums.forEach(function(album){
-                var albumId = album.sys.id;
-                var tempAlbumCover= null;
-
-                items.forEach(function(item){
-                    // Find and print album details
-                    if(item.sys.id === albumId){
-                        assets.forEach(function(asset){
-                            if (asset.sys.id === item.fields.coverImage.sys.id){
-                                tempAlbumCover = "http:" + asset.fields.file.url;
-                            }
-                        })
-                             
-                        // Find and print picture details
-                        var images = item.fields.images;
-                        images.forEach(function(image){
-                        var tempLocation = null;
-                        var tempLink = null;
-                            items.forEach(function(item){
-                                if (item.sys.id === image.sys.id){
-                                    tempLocation = item.fields.location;
-                                    // Find id from sys then from fields as assets are found with fields.id
-                                    // Find the right image asset based on fields.id
-                                    assets.forEach(function(asset){
-                                        if (asset.sys.id === item.fields.photo.sys.id){
-                                            tempLink = "http:" + asset.fields.file.url;
-                                        }
-                                    })                                   
-                                }
-                            })
-                            photoDump.push({
-                                "location": tempLocation,
-                                "link": tempLink
-                            })
-                        })
-
-                        filmprints.album.push(
-                            {
-                                "name": item.fields.albumName, 
-                                "date": item.fields.albumDate,
-                                "coverImage": tempAlbumCover,
-                                "photo": photoDump,
-                                "id": albumId
-                            }
-                        );
-
-                        photoDump=[];
-
-                        
-                    }    
-                })          
-            })
-        }
-    
-    })
-    console.log("cleaned up JSON: ",filmprints);
-
-    showAlbum();
-}
-
-/* Populates the view with home page data */
 function showHome(json) {
-    // return link for an image from Asset object
-
     let maxCount = 0;
     filmprints.album.forEach( function(singleAlbum, index) {
         if (singleAlbum.photo.length > maxCount) {
@@ -198,11 +120,9 @@ function showHome(json) {
         }
     });
 
-    // heroSection.innerHTML = '';
     var templateFn = Handlebars.compile(heroTemplate.innerHTML);
     heroSection.innerHTML = templateFn(filmprints);
 
-    // albumGallery.innerHTML = '';
     var templateFn = Handlebars.compile(albumTemplate.innerHTML);
     albumGallery.innerHTML = templateFn(filmprints);
 
@@ -215,19 +135,12 @@ function goToAlbum(albumTile) {
 
 function showAlbum() {
     let albumId = getURLParameter("id");
-    console.log(filmprints);
-
     filmprints.album.forEach(function(singleAlbum){
         if (singleAlbum.id === albumId){
-
-            console.log(singleAlbum.photo);
-            console.log(singleAlbum.id);
-            console.log("container: ", photoContainer);
             var templateFn = Handlebars.compile(photoTemplate.innerHTML);
             photoContainer.innerHTML = templateFn(singleAlbum);
         }
     });
-
     loadFullpage();
 }
 
