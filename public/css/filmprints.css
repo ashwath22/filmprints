@@ -6,10 +6,13 @@
 
 .heroImage{
   text-align: center;
+}
+
+.fullscreen-container {
   height:100%;
 }
 
-.heroImage img {
+.fullscreen {
   height:100%;
   width:100%;
   object-fit: cover;
@@ -185,13 +188,13 @@ figure h3 {
   background: #fff;
 }
 
-.printPhotos img {
+/*.printPhotos img {
   position:center;
   z-index: 11;
   width: 100%;
   height: auto;
 
-}
+}*/
 
 .printPhotos {
   text-align: center;

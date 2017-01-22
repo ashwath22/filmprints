@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>TESTING</title>
+  <title>Filmprints</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,42 +13,27 @@
 </head>
 
 <body>
-
-  <div id="popUp" class="loader hidden">
-    <a href="#" class="closePopUp">x</a>  
-    <div class="popUpContainer">    
-    </div>    
-  </div>
   
-  <div id="fullpage">
+  <div id="fullpage">  
     <div class="section">
-      <section class = "heroSection heroImage"></section>
+      <section class = "heroSection heroImage fullscreen-container"></section>
     </div>
     <div class="section">
-        <section class = "albumGallery"></section>
+      <section class = "albumGallery"></section>
     </div>
   </div>
-
-  <script id="albumContents" type="text/x-handlebars-template">
-    {{#each photo}}
-      <div class= "printPhotos section"> 
-        <img src="{{link}}" />
-        <p>{{location}}</p>
-      </div>             
-    {{/each}}  
-  </script>
 
   <script id="heroTemplate" type="text/x-handlebars-template">
     <h1>{{titleText}}</h1>
-    <img src="{{heroImageUrl}}" />
+    <img class="fullscreen" src="{{heroImageUrl}}" />
     <p>{{leadText}}</p>  
   </script>
 
   <script id="albumTemplate" type="text/x-handlebars-template">
     <div class= "albumsSection">
       {{#each album}}
-        <div class= "albumTile"> 
-          <figure id= {{id}}>
+        <div class= "albumTile" id= {{id}} onclick="goToAlbum(this)">
+          <figure>
             <h3 class="albumName">{{name}}</h3>
             <img src="{{coverImage}}" />
             <p class="albumDate">{{date}}</p>
@@ -58,18 +43,15 @@
     </div>  
   </script>
 
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://npmcdn.com/contentful@latest/browser-dist/contentful.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.2/jquery.fullPage.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#fullpage').fullpage();
-      console.log("fullpage engaged!!");
-    });
-  </script>
+
   <script src="js/filmprints.jsx"></script>
+  <script>
+    window.addEventListener('load', loadHomeContent);
+  </script>
 
 </body>
 </html>
