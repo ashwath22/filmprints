@@ -1,5 +1,3 @@
-// Create the Elements.
-console.log("here");
 let heroSection = document.querySelector(".heroSection");
 let albumGallery = document.querySelector(".albumGallery");
 let albumImages = document.querySelector("#albumImages");
@@ -23,7 +21,6 @@ var filmprints = {
 
 function loadHomeContent(doSomething) {
     jQuery.getJSON(contentfulUrl, function(json) {
-        console.log('json dump: ',json);
         cleanJson(json);
         showHome();
     });
@@ -31,7 +28,6 @@ function loadHomeContent(doSomething) {
 
 function loadAlbumContent(doSomething) {
     jQuery.getJSON(contentfulUrl, function(json) {
-        console.log('json dump: ',json);
         cleanJson(json);
         showAlbum();
     });
@@ -109,7 +105,6 @@ function cleanJson(json) {
         }
     
     });
-    console.log("cleaned up JSON: ",filmprints);
 }
 
 function showHome(json) {
@@ -146,8 +141,7 @@ function showAlbum() {
 
 function loadFullpage() {
     $(document).ready(function() {
-      $('#fullpage').fullpage();
-      console.log("fullpage engaged!!");
+        $('#fullpage').fullpage();
     });
 }
 

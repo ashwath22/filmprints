@@ -14,16 +14,17 @@
 
 <body>
 
-  <div id="fullpage" class="photoContainer text-center"></div>
+  <div id="fullpage" class="photoContainer"></div>
 
   <script id="photoTemplate" type="text/x-handlebars-template">
-      {{#each photo}}
-        <div class="section">
-          <section class = "photo fullscreen-container">
-            <img class="fullscreen" src="{{link}}" />
-          </section>
-        </div>
-      {{/each}}
+    {{#each photo}}
+      <div class="section">
+        <section class = "photo fullscreen-container">
+          <div class="location text-center">{{location}}</div>
+          <img class="fullscreen" src="{{link}}" />
+        </section>
+      </div>
+    {{/each}}
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
