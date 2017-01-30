@@ -141,7 +141,9 @@ function showAlbum() {
 
 function loadFullpage() {
     $(document).ready(function() {
-        $('#fullpage').fullpage();
+        $('#fullpage').fullpage({
+            scrollOverflow: true
+        });
     });
 }
 

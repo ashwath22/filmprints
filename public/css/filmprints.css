@@ -2,6 +2,7 @@
   margin: 0;
   height: 100%;
   width: 100%;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
 
 .text-center{
@@ -33,7 +34,6 @@ div.location {
 }
 
 .heroImage h1 {
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-weight: 300;
   position:absolute;
   top:30%;
@@ -74,6 +74,7 @@ ul {
   margin-bottom: 8px;
   width: calc(50% - 4px);
   margin-right: 8px;
+  position: relative;
 }
 
 .albumTile:nth-of-type(2n) {
@@ -101,45 +102,44 @@ ul {
 figure {
   margin: 10px;
   overflow: hidden;
-  position: relative;
   text-align: center;
+  width: 100%;
 }
 
 figure img {
-  
   border: none;
   max-width: 100%;
   height: auto;
   display: block;
   background: #ccc;
   transition: transform .7s ease-in-out;
-  
   left: 50%;
   top: 50%;
 }
 
-figure p {
-font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  font-weight: 200;
-  position:absolute;
-  color: white;
-  z-index: 2;
-  left: 0;
-  width: 100%;
-  top:50%;
-}
-
-figure h3 {
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  font-weight: 200;
-  position:absolute;
-  color: white;
-  z-index: 2;
-  left: 0;
-  width: 100%;
-  top:40%;
-}
-
 .printPhotos {
   text-align: center;
+}
+
+.albumInfo {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  font-weight: 200;
+  color: white;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.albumInfo h3, .albumInfo p {
+  margin: 5px;
+}
+
+.albumInfo hr {
+  width: 60%;
+  margin: 0;
 }

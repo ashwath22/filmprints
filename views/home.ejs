@@ -34,9 +34,12 @@
       {{#each album}}
         <div class= "albumTile" id= {{id}} onclick="goToAlbum(this)">
           <figure>
-            <h3 class="albumName">{{name}}</h3>
+            <div class="albumInfo">
+              <h3>{{name}}</h3>
+              <hr />
+              <p>{{date}}</p>
+            </div>
             <img src="{{coverImage}}" />
-            <p class="albumDate">{{date}}</p>
           </figure> 
         </div>             
       {{/each}}
@@ -44,6 +47,7 @@
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.2/vendors/scrolloverflow.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://npmcdn.com/contentful@latest/browser-dist/contentful.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.2/jquery.fullPage.js"></script>
